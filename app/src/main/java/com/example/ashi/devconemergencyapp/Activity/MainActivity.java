@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.ashi.devconemergencyapp.Fragment.ComplainSystemFragment;
 import com.example.ashi.devconemergencyapp.Fragment.EmergencyFragment;
+import com.example.ashi.devconemergencyapp.Fragment.MainFragment;
 import com.example.ashi.devconemergencyapp.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,23 +17,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    public void openComplainSystem(View view) {
         FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-        ComplainSystemFragment complainSystemFragment=new ComplainSystemFragment();
-        fragmentTransaction.replace(R.id.fragment,complainSystemFragment);
+        MainFragment mainFragment=new MainFragment();
+        fragmentTransaction.replace(R.id.fragment,mainFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
-    public void openEmergencyFragment(View view) {
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-        EmergencyFragment emergencyFragment=new EmergencyFragment();
-        fragmentTransaction.replace(R.id.fragment,emergencyFragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
 }
