@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DevCon Emergency App</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_complain_fragment">Hello Complain fragment</string>
+    <string name="hello_emergency_fragment">Hello Emergency fragment</string>
+</resources>
