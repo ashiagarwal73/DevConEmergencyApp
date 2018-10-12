@@ -56,14 +56,12 @@
 
            <RatingBar
                android:id="@+id/rating"
-               android:layout_width="match_parent"
+               android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                style="?android:ratingBarStyleSmall"
                android:numStars="5"
-               android:rating="4.5"
-               android:layout_marginEnd="50dp"
-               android:theme="@style/RatingBar"
-               android:layout_marginRight="50dp"/>
+               android:rating="2"
+               android:theme="@style/RatingBar" />
 
        </LinearLayout>
        <TextView
