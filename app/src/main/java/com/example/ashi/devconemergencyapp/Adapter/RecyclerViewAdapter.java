@@ -1,4 +1,4 @@
-package com.example.ashi.devconemergencyapp;
+package com.example.ashi.devconemergencyapp.Adapter;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.ashi.devconemergencyapp.rest.Location1;
+import com.example.ashi.devconemergencyapp.R;
+import com.example.ashi.devconemergencyapp.rest.Location;
 import com.example.ashi.devconemergencyapp.rest.Results;
 
 import java.util.List;
@@ -66,7 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 subHeaderViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Location1 location=dataModels.get(position).getGeometry().getLocation();
+                        Location location=dataModels.get(position).getGeometry().getLocation();
                         Uri gmmIntentUri = Uri.parse("google.navigation:q="+location.getLat()+","+location.getLng());
                         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                         mapIntent.setPackage("com.google.android.apps.maps");

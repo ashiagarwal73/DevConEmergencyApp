@@ -13,10 +13,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.ashi.devconemergencyapp.R;
-import com.example.ashi.devconemergencyapp.RecyclerViewAdapter;
+import com.example.ashi.devconemergencyapp.Adapter.RecyclerViewAdapter;
 import com.example.ashi.devconemergencyapp.rest.ApiClient;
 import com.example.ashi.devconemergencyapp.rest.ApiInterface;
 import com.example.ashi.devconemergencyapp.rest.Places;
@@ -38,14 +39,14 @@ public class EmergencyFragment extends Fragment {
     private String lati;
     List<Results> PoliceStations=new ArrayList<>(),Hospitals=new ArrayList<>();
     private final static String appid = "AIzaSyB4rsmNHuxsLaktneAh0YfFiFgEVJu_PBs";
-
+    ProgressBar progressBar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_emergency, container, false);
         recyclerView=view.findViewById(R.id.recyclerView);
-
+        progressBar=view.findViewById(R.id.progressBar);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -83,6 +84,8 @@ public class EmergencyFragment extends Fragment {
                                         Log.d("response",""+response.body());
                                         Hospitals=response.body().getResults();
                                         EnterValuesInList();
+                                        progressBar.setVisibility(View.GONE);
+
 
                                     }
                                     @Override
@@ -120,6 +123,14 @@ public class EmergencyFragment extends Fragment {
         tempData2.setViewType(Results.HEADER_TYPE);
         totalList.add(tempData2);
         totalList.addAll(Hospitals);}
+        if(totalList.isEmpty())
+        {
+            Results tempData=new Results();
+            tempData.setHeaderText("No Data Available Please try after some time");
+            tempData.setViewType(Results.HEADER_TYPE);
+            totalList.add(tempData);
+
+        }
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
         RecyclerViewAdapter recyclerViewAdapter=new RecyclerViewAdapter(totalList);

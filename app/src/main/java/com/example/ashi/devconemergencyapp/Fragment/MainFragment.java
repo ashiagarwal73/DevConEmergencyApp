@@ -15,16 +15,20 @@ import com.example.ashi.devconemergencyapp.R;
 public class MainFragment extends Fragment {
 
 
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_main, container, false);
+         fragmentManager=getActivity().getSupportFragmentManager();
+         fragmentTransaction=fragmentManager.beginTransaction();
         view.findViewById(R.id.complain).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+
                 ComplainSystemFragment complainSystemFragment=new ComplainSystemFragment();
                 fragmentTransaction.replace(R.id.fragment,complainSystemFragment);
                 fragmentTransaction.addToBackStack(null);
@@ -34,10 +38,17 @@ public class MainFragment extends Fragment {
         view.findViewById(R.id.emergency).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 EmergencyFragment emergencyFragment=new EmergencyFragment();
                 fragmentTransaction.replace(R.id.fragment,emergencyFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+        view.findViewById(R.id.mechanics).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MechanicsFragment mechanicsFragment=new MechanicsFragment();
+                fragmentTransaction.replace(R.id.fragment,mechanicsFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

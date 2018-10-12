@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
         <Button
             android:id="@+id/complain"
             android:layout_width="match_parent"
@@ -21,6 +21,12 @@
             android:text="Emergency"
             android:layout_weight="1"
             android:id="@+id/emergency"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mechanics"
+            android:layout_weight="1"
+            android:id="@+id/mechanics"/>
     </LinearLayout>
 
 </FrameLayout>

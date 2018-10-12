@@ -7,13 +7,13 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class Geometry {
-    public Location1 getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(Location1 location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
     @SerializedName("location")
-    Location1 location;
+    Location location;
 }

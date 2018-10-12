@@ -4,7 +4,7 @@ package com.example.ashi.devconemergencyapp.rest;
  * Created by Ashi on 20-03-2018.
  */
 
-public class Location1 {
+public class Location {
     public double getLat() {
         return lat;
     }
