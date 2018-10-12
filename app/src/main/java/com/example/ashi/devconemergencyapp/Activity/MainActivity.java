@@ -1,12 +1,11 @@
 package com.example.ashi.devconemergencyapp.Activity;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
-import com.example.ashi.devconemergencyapp.Fragment.ComplainSystemFragment;
 import com.example.ashi.devconemergencyapp.Fragment.EmergencyFragment;
 import com.example.ashi.devconemergencyapp.Fragment.MainFragment;
 import com.example.ashi.devconemergencyapp.R;
@@ -21,8 +20,13 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         MainFragment mainFragment=new MainFragment();
         fragmentTransaction.replace(R.id.fragment,mainFragment);
-        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        EmergencyFragment emergencyFragment=new EmergencyFragment();
+        emergencyFragment.onRequestPermissionsResult(requestCode,permissions,grantResults);
+    }
 }
