@@ -47,3 +47,5 @@ The following features have to be worked upon :-
 * We plan to migrate our database to Amazon Web Services.
 
 APK : https://drive.google.com/file/d/1KzXwl6Vr3TGJ8BFI86XoNZD0eYGlxS9V/view
+
+![FUTURE](IMG_20181012_232435.jpg)
