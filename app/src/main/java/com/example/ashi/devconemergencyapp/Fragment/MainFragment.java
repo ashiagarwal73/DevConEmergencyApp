@@ -42,9 +42,9 @@ public class MainFragment extends Fragment {
 
 
         final ArrayList<Integer> imgRes = new ArrayList<>();
-        imgRes.add(R.drawable.common_google_signin_btn_text_dark_normal_background);
-        imgRes.add(R.drawable.common_google_signin_btn_icon_dark);
-        imgRes.add(R.drawable.common_google_signin_btn_text_dark);
+        imgRes.add(R.drawable.complainslider);
+        imgRes.add(R.drawable.emergencyslider);
+        imgRes.add(R.drawable.mechanic2);
         SlideshowAdapter slideshowAdapter = new SlideshowAdapter(imgRes);
         viewPager.setAdapter(slideshowAdapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -82,7 +82,7 @@ public class MainFragment extends Fragment {
                 System.out.println("running");
                 handler.post(updater);
             }
-        }, 1000, 1000);
+        }, 2000, 1000);
 
 
 
