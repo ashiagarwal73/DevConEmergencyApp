@@ -3,60 +3,75 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:src="@color/colorAccent"
+        android:scaleType="fitXY"
+        android:src="@drawable/mechanic"
         android:id="@+id/image"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Name"/>
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="#000"
+            android:text="Shop"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Ashi"
+            android:text="Mechanics "
             android:id="@+id/name"/>
     </LinearLayout>
-    <RatingBar
-        android:id="@+id/rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="?android:ratingBarStyleIndicator"
-        android:numStars="5"
-        android:rating="2.5"
-        android:layout_marginEnd="50dp"
-        android:theme="@style/RatingBar"
-        android:layout_marginRight="50dp"/>
+
 
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       android:padding="10dp"
+
        android:orientation="horizontal">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_weight="3">
+
        <TextView
            android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:layout_weight="3"
-           android:text="Review"/>
+           android:layout_height="wrap_content"
+           android:text="Review"
+           android:textStyle="bold"
+           android:textSize="15sp"
+           android:textColor="#000"/>
+
+           <RatingBar
+               android:id="@+id/rating"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               style="?android:ratingBarStyleSmall"
+               android:numStars="5"
+               android:rating="4.5"
+               android:layout_marginEnd="50dp"
+               android:theme="@style/RatingBar"
+               android:layout_marginRight="50dp"/>
+
+       </LinearLayout>
        <TextView
            android:layout_width="match_parent"
-           android:layout_height="match_parent"
+           android:layout_height="wrap_content"
            android:layout_weight="1"
-           android:id="@+id/review"/>
+           android:id="@+id/review"
+           android:text="I took my bike to the Melrose Auto Shop, and Mr. Raju diagnosed the problem, ordered the spare parts, and installed them in about an hour's time."/>
 
    </LinearLayout>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Show Crowd"
-        android:id="@+id/crowd"/>
 </LinearLayout>
