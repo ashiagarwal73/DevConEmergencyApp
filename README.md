@@ -46,6 +46,6 @@ The following features have to be worked upon :-
 * Backend algorithms for image processing of complaints.
 * We plan to migrate our database to Amazon Web Services.
 
-APK : https://drive.google.com/file/d/1KzXwl6Vr3TGJ8BFI86XoNZD0eYGlxS9V/view
+APK : https://drive.google.com/open?id=1iEqRjVZcyVqnMNARQhtQRxAcp6fg21f-
 
 ![FUTURE](IMG_20181012_232435.jpg)
