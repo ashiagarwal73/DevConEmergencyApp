@@ -1,6 +1,5 @@
 # APAAT
 ![App Log](apaat.PNG)   
-APK : https://drive.google.com/file/d/1KzXwl6Vr3TGJ8BFI86XoNZD0eYGlxS9V/view
 We all face problems in our day to
 day lives and it’s very simple to point
 them out or wish for someone to
@@ -46,3 +45,5 @@ The following features have to be worked upon :-
 * Backend algorithms to display the best rated places to visit in times of need, on top.
 * Backend algorithms for image processing of complaints.
 * We plan to migrate our database to Amazon Web Services.
+
+APK : https://drive.google.com/file/d/1KzXwl6Vr3TGJ8BFI86XoNZD0eYGlxS9V/view
