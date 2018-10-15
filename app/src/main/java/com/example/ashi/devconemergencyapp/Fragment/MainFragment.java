@@ -44,7 +44,7 @@ public class MainFragment extends Fragment {
         final ArrayList<Integer> imgRes = new ArrayList<>();
         imgRes.add(R.drawable.complainslider);
         imgRes.add(R.drawable.emergencyslider);
-        imgRes.add(R.drawable.mechanic2);
+        imgRes.add(R.drawable.mechanicslider);
         SlideshowAdapter slideshowAdapter = new SlideshowAdapter(imgRes);
         viewPager.setAdapter(slideshowAdapter);
         tabLayout.setupWithViewPager(viewPager);
