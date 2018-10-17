@@ -82,7 +82,7 @@ public class MainFragment extends Fragment {
                 System.out.println("running");
                 handler.post(updater);
             }
-        }, 5000, 1000);
+        }, 5000, 5000);
 
 
 
