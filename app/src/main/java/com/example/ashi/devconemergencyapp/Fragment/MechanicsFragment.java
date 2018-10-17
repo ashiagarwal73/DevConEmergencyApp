@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -54,6 +55,7 @@ public class MechanicsFragment extends Fragment {
                     Complaint complaint=snapshot.getValue(Complaint.class);
                     complaints.add(complaint);
                 }
+                Collections.reverse(complaints);
                 MechanicsAdapter mechanicsAdapter=new MechanicsAdapter(complaints);
                 mechanicsRecyclerView.setAdapter(mechanicsAdapter);
                 progressBar.setVisibility(View.GONE);

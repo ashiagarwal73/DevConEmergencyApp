@@ -86,7 +86,7 @@ public class ComplainSystemFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_complain_system, container, false);
         spinner=view.findViewById(R.id.spinner);
-        progressBar=view.findViewById(R.id.progressBar);
+        progressBar=view.findViewById(R.id.progressbar);
         final List<String> categories = new ArrayList<String>();
         categories.add("Choose Category");
         categories.add("Police");
@@ -198,7 +198,7 @@ public class ComplainSystemFragment extends Fragment {
                         Toast.makeText(getContext(), "Upload image", Toast.LENGTH_SHORT).show();
                     }
                     else
-                    {
+                    {progressBar.setVisibility(View.VISIBLE);
                         //bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
                         UploadTask uploadTask = imagesRef.putBytes(byteArray);
                         uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -222,7 +222,7 @@ public class ComplainSystemFragment extends Fragment {
 
                                 }
                                 complain.setCategory(category);
-                                progressBar.setVisibility(View.VISIBLE);
+
                                 mDatabase.child("Complaint").push().setValue(complain).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {

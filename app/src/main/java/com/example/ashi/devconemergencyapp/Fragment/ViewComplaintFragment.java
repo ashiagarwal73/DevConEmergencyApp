@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ViewComplaintFragment extends Fragment {
@@ -43,6 +44,7 @@ public class ViewComplaintFragment extends Fragment {
                     Complaint complaint=snapshot.getValue(Complaint.class);
                     complaints.add(complaint);
                 }
+                Collections.reverse(complaints);
                 LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
                 recyclerView.setLayoutManager(linearLayoutManager);
                 ViewComplainAdapter viewComplainAdapter=new ViewComplainAdapter(complaints);
