@@ -1,5 +1,7 @@
 package com.example.ashi.devconemergencyapp.rest;
 
+import com.example.ashi.devconemergencyapp.Model.Places;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

@@ -18,11 +18,17 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.ashi.devconemergencyapp.Model.Complaint;
+import com.example.ashi.devconemergencyapp.Model.Counter;
 import com.example.ashi.devconemergencyapp.R;
 import com.example.ashi.devconemergencyapp.rest.Utility;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -43,6 +49,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ComplainSystemFragment extends Fragment {
     String lati;
@@ -50,6 +58,7 @@ public class ComplainSystemFragment extends Fragment {
     Complaint com2;
     String longi;
     byte[] byteArray;
+    Spinner spinner;
     int count = 0;
     private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
     private Button btnSelect, btnupload;
@@ -59,9 +68,11 @@ public class ComplainSystemFragment extends Fragment {
     DatabaseReference mDatabase;
     Uri downloadUrl;
     Counter counter;
+    ProgressBar progressBar;
     StorageReference storageRef;
     private OnFragmentInteractionListener mListener;
     private FusedLocationProviderClient mFusedLocationClient;
+    private String category;
 
     public ComplainSystemFragment() {
         // Required empty public constructor
@@ -75,7 +86,30 @@ public class ComplainSystemFragment extends Fragment {
         storageRef = storage.getReference();
 
         View view = inflater.inflate(R.layout.fragment_complain_system, container, false);
-        // Inflate the layout for this fragment
+        spinner=view.findViewById(R.id.spinner);
+        progressBar=view.findViewById(R.id.progressBar);
+        final List<String> categories = new ArrayList<String>();
+        categories.add("Choose Category");
+        categories.add("Police");
+        categories.add("Railway");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, categories);
+        spinner.setAdapter(dataAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0)
+                {
+                    Toast.makeText(getContext(), "Please choose a Category", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    category=parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         if (mListener != null) {
             mListener.onFragmentInteraction("Complain");
         }
@@ -104,26 +138,6 @@ public class ComplainSystemFragment extends Fragment {
         //Location
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
 
-//        if(ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.))
-//        if (ActivityCompat.checkSelfPermission(Main2Activity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            // TODO: Consider calling
-//            //    ActivityCompat#requestPermissions
-//            // here to request the missing permissions, and then overriding
-//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-//            //                                          int[] grantResults)
-//            // to handle the case where the user grants the permission. See the documentation
-//            // for ActivityCompat#requestPermissions for more details.
-//            return;
-//        }
-//        mFusedLocationClient.getLastLocation().addOnSuccessListener(getContext(), new OnSuccessListener<Location>() {
-//            @Override
-//            public void onSuccess(Location location) {
-//                if (location != null) {
-//                    lati = String.valueOf(location.getLatitude());
-//                    longi = String.valueOf(location.getLongitude());
-//                }
-//            }
-//        });
         if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -188,13 +202,13 @@ public class ComplainSystemFragment extends Fragment {
                 }
                 else
                 {
-                    final Complaint eventsInformation = new Complaint();
+                    final Complaint complain = new Complaint();
                     counter = new Counter();
                     count--;
                     counter.setCounterid(count);
                     mDatabase.child("Counter").setValue(counter);
                     //   mDatabase.child("Counter").setValue(com1,com2);
-                    eventsInformation.setDescription(desc.getText().toString());
+                    complain.setDescription(desc.getText().toString());
                     // sdate=date.getText().toString();
                     //Bitmap bmp;
                     StorageReference imagesRef = storageRef.child(count+".png");
@@ -217,16 +231,28 @@ public class ComplainSystemFragment extends Fragment {
                                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                                 downloadUrl = taskSnapshot.getDownloadUrl();
                                 //Toast.makeText(MainActivity.this, ""+downloadUrl, Toast.LENGTH_SHORT).show();
-                                eventsInformation.setImage(downloadUrl.toString());
-                                eventsInformation.setLongi(longi);
-                                eventsInformation.setLati(lati);
-                                mDatabase.child("Complaint").child(counter.getCounterid() + "").setValue(eventsInformation);
-//                                Intent intent=new Intent(MainActivity.this,Main2Activity.class);
-                                Toast.makeText(getContext(), "Data posted succesfully", Toast.LENGTH_SHORT).show();
-//                                startActivity(intent);
-                                desc.setText("Enter Description");
-                                setBitmap=null;
-                                ivImage.setImageBitmap(null);
+                                complain.setImage(downloadUrl.toString());
+                                complain.setLongi(longi);
+                                complain.setLati(lati);
+                                if(spinner.getSelectedItem().toString().equals("Choose Category"))
+                                {
+                                    Toast.makeText(getContext(), "Choose category", Toast.LENGTH_SHORT).show();
+                                    return;
+
+                                }
+                                complain.setCategory(category);
+                                progressBar.setVisibility(View.VISIBLE);
+                                mDatabase.child("Complaint").child(counter.getCounterid() + "").setValue(complain).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(getContext(), "Complaint filed succesfully", Toast.LENGTH_SHORT).show();
+                                        desc.setText("");
+                                        setBitmap=null;
+                                        ivImage.setImageBitmap(null);
+                                        progressBar.setVisibility(View.GONE);
+                                        getActivity().getSupportFragmentManager().popBackStackImmediate();
+                                    }
+                                });
                             }
                         });
                     }

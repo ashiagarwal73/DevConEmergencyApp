@@ -115,6 +115,15 @@ public class MainFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+        view.findViewById(R.id.view_complain).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewComplaintFragment viewComplaintFragment=new ViewComplaintFragment();
+                fragmentTransaction.replace(R.id.fragment,viewComplaintFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         return view;
     }
 

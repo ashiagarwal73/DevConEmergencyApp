@@ -13,14 +13,13 @@
         android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
         android:orientation="vertical"
         android:padding="10dp" >
         <ImageView
             android:id="@+id/ivImage"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
             android:src="@android:drawable/ic_menu_camera"
             />
         <LinearLayout
@@ -33,35 +32,43 @@
             <Button
                 android:id="@+id/btnSelectPhoto"
                 android:layout_width="320dp"
-
+                android:background="#000"
+                android:textColor="#fff"
                 android:layout_height="wrap_content"
                 android:text="Select Photo"
                 android:layout_gravity="center"
                 />
             <EditText
                 android:id="@+id/editText"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:hint="Description of the incident(optional)"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:hint="Description of the incident"
                 android:inputType="textPersonName"
-                android:background="#ffffff"
                 android:layout_marginTop="20dp"
-                android:textColorHint="#000"
                 android:textAlignment="center"
                 android:selectAllOnFocus="true"
                  />
+            <Spinner
+                android:layout_width="320dp"
+                android:layout_height="40dp"
+                android:padding="10dp"
+                android:id="@+id/spinner">
+            </Spinner>
             <Button
                 android:id="@+id/submit"
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
-
+                android:background="#000"
+                android:textColor="#fff"
                 android:text="SUBMIT"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
-
                 />
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressbar"
+                android:visibility="gone"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

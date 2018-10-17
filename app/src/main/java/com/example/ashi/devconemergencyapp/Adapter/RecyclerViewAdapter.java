@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.ashi.devconemergencyapp.R;
-import com.example.ashi.devconemergencyapp.rest.Location;
-import com.example.ashi.devconemergencyapp.rest.Results;
+import com.example.ashi.devconemergencyapp.Model.Location;
+import com.example.ashi.devconemergencyapp.Model.Results;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.ashi.devconemergencyapp.Fragment;
+package com.example.ashi.devconemergencyapp.Model;
 
 public class Counter {
     public int getCounterid() {

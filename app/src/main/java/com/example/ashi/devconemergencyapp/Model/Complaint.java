@@ -1,6 +1,32 @@
-package com.example.ashi.devconemergencyapp.Fragment;
+package com.example.ashi.devconemergencyapp.Model;
 
 public class Complaint {
+    String description="";
+    float rating ;
+    String name="";
+    String review="";
+    String image;
+    String lati;
+    String longi;
+    String status="";
+    String category="";
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
 
 
     public String getName() {
@@ -15,7 +41,7 @@ public class Complaint {
         this.rating = rating;
     }
 
-    float rating;
+
     public void setName(String name) {
         this.name = name;
     }
@@ -28,8 +54,6 @@ public class Complaint {
         this.review = review;
     }
 
-    String name;
-    String review;
 
     public String getDescription() {
         return description;
@@ -39,7 +63,6 @@ public class Complaint {
         this.description = description;
     }
 
-    String description;
 
     public String getImage() {
         return image;
@@ -50,7 +73,6 @@ public class Complaint {
     }
 
 
-    String image;
 
     public String getLati() {
         return lati;
@@ -68,7 +90,5 @@ public class Complaint {
         this.longi = longi;
     }
 
-    String lati;
-    String longi;
 
 }

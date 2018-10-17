@@ -1,4 +1,4 @@
-package com.example.ashi.devconemergencyapp.rest;
+package com.example.ashi.devconemergencyapp.Model;
 
 
 import java.util.List;

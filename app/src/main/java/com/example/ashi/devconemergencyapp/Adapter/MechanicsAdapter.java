@@ -1,7 +1,5 @@
 package com.example.ashi.devconemergencyapp.Adapter;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,10 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ashi.devconemergencyapp.R;
-import com.example.ashi.devconemergencyapp.rest.Location;
-import com.example.ashi.devconemergencyapp.rest.Results;
-
-import java.util.List;
 
 public class MechanicsAdapter extends RecyclerView.Adapter {
 

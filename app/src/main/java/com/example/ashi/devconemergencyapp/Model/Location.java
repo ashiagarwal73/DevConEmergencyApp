@@ -1,4 +1,4 @@
-package com.example.ashi.devconemergencyapp.rest;
+package com.example.ashi.devconemergencyapp.Model;
 
 /**
  * Created by Ashi on 20-03-2018.
