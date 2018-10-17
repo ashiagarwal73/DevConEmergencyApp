@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:background="@drawable/border"
     android:orientation="vertical">
     <ImageView
         android:layout_width="match_parent"
@@ -20,7 +22,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:textStyle="bold"
             android:textSize="15sp"
             android:textColor="#000"
@@ -28,12 +30,18 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:layout_weight="1"
-            android:text="Mechanics "
+            android:text=""
             android:id="@+id/name"/>
     </LinearLayout>
 
-
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="#b4b2b2"
+    android:padding="30dp"
+    />
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
@@ -44,7 +52,7 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:orientation="vertical"
-           android:layout_weight="3">
+           android:layout_weight="2">
 
        <TextView
            android:layout_width="match_parent"
@@ -60,7 +68,7 @@
                android:layout_height="wrap_content"
                style="?android:ratingBarStyleSmall"
                android:numStars="5"
-               android:rating="2"
+               android:rating="5"
                android:theme="@style/RatingBar" />
 
        </LinearLayout>
@@ -68,8 +76,9 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_weight="1"
+           android:padding="10dp"
            android:id="@+id/review"
-           android:text="I took my bike to the Melrose Auto Shop, and Mr. Raju diagnosed the problem, ordered the spare parts, and installed them in about an hour's time."/>
+           />
 
    </LinearLayout>
 </LinearLayout>
