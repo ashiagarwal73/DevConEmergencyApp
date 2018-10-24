@@ -14,11 +14,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="6dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginRight="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,18 +91,13 @@
             android:textSize="17dp" />
 
     </LinearLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager_fragment_main"
-        android:layout_width="0dp"
+        android:layout_width="376dp"
         android:layout_height="250dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="18dp" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout_fragment_main"
