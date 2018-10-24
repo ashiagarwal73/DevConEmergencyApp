@@ -39,10 +39,10 @@ public class ViewComplaintFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                complaints.clear();
                 for (DataSnapshot snapshot:dataSnapshot.getChildren())
                 {
                     Complaint complaint=snapshot.getValue(Complaint.class);
-                    if(!complaints.contains(complaint))
                     complaints.add(complaint);
                 }
                 Collections.reverse(complaints);
