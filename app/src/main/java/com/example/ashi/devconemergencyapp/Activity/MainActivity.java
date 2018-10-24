@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         MainFragment mainFragment=new MainFragment();
         fragmentTransaction.replace(R.id.fragment,mainFragment);
         fragmentTransaction.commit();
+
     }
 
     @Override

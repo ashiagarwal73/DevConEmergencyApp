@@ -2,10 +2,14 @@ package com.example.ashi.devconemergencyapp.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -17,6 +21,11 @@ import android.widget.TableLayout;
 
 import com.example.ashi.devconemergencyapp.Adapter.SlideshowAdapter;
 import com.example.ashi.devconemergencyapp.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -32,6 +41,10 @@ public class MainFragment extends Fragment {
     ViewPager viewPager;
 
     int currentPage=0;
+    private FusedLocationProviderClient mFusedLocationClient;
+    double lati;
+    double longi;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,6 +53,38 @@ public class MainFragment extends Fragment {
          fragmentManager=getActivity().getSupportFragmentManager();
          tabLayout = view.findViewById(R.id.tab_layout_fragment_main);
          viewPager = view.findViewById(R.id.view_pager_fragment_main);
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
+
+        if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return view;
+        }
+        mFusedLocationClient.getLastLocation()
+                .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            // Logic to handle location object
+                            lati=location.getLatitude();
+                            longi=location.getLongitude();
+                            String androidId = Settings.Secure.getString(getActivity().getContentResolver(),
+                                    Settings.Secure.ANDROID_ID);
+                            DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference();
+                            com.example.ashi.devconemergencyapp.Model.Location location1=new com.example.ashi.devconemergencyapp.Model.Location();
+                            location1.setLat(lati);
+                            location1.setLng(longi);
+                            databaseReference.child("Coordinates").child(androidId).setValue(location1);
+                        }
+                    }
+                });
+
 
 
         final ArrayList<Integer> imgRes = new ArrayList<>();

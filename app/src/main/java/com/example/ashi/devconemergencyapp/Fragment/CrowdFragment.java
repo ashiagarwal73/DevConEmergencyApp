@@ -1,13 +1,16 @@
 package com.example.ashi.devconemergencyapp.Fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -16,6 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -95,6 +99,7 @@ public class CrowdFragment extends FragmentActivity implements OnMapReadyCallbac
         mapButton = (Button) findViewById(R.id.map_button);
 
         mapButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 if(mapInput.getText().toString().isEmpty())
@@ -106,6 +111,8 @@ public class CrowdFragment extends FragmentActivity implements OnMapReadyCallbac
                         Address address = addressList.get(0);
                         LatLng placeLatLang = new LatLng(address.getLatitude(), address.getLongitude());
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(placeLatLang, 13));
+                        InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(mapInput.getWindowToken(),0);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
