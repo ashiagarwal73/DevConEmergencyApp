@@ -42,6 +42,7 @@ public class ViewComplaintFragment extends Fragment {
                 for (DataSnapshot snapshot:dataSnapshot.getChildren())
                 {
                     Complaint complaint=snapshot.getValue(Complaint.class);
+                    if(!complaints.contains(complaint))
                     complaints.add(complaint);
                 }
                 Collections.reverse(complaints);

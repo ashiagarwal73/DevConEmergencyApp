@@ -222,8 +222,9 @@ public class ComplainSystemFragment extends Fragment {
 
                                 }
                                 complain.setCategory(category);
-
-                                mDatabase.child("Complaint").push().setValue(complain).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                String mGroupId = mDatabase.push().getKey();
+                                complain.setKey(mGroupId);
+                                mDatabase.child("Complaint").child(mGroupId).setValue(complain).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Toast.makeText(getContext(), "Complaint filed succesfully", Toast.LENGTH_SHORT).show();
@@ -273,11 +274,6 @@ public class ComplainSystemFragment extends Fragment {
                     if(result)
                         cameraIntent();
                 }
-//else if (items[item].equals("Choose from Library")) {
-//                    userChoosenTask="Choose from Library";
-//                    if(result)
-//                        galleryIntent();
-//                }
                 else if (items[item].equals("Cancel")) {
                     dialog.dismiss();
                 }
