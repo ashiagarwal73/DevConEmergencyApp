@@ -1,6 +1,7 @@
 package com.example.ashi.devconemergencyapp.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -122,6 +123,13 @@ public class MainFragment extends Fragment {
                 fragmentTransaction.replace(R.id.fragment,viewComplaintFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+            }
+        });
+        view.findViewById(R.id.crowd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),CrowdFragment.class);
+                startActivity(intent);
             }
         });
         return view;

@@ -29,4 +29,5 @@ public class MainActivity extends AppCompatActivity {
         EmergencyFragment emergencyFragment=new EmergencyFragment();
         emergencyFragment.onRequestPermissionsResult(requestCode,permissions,grantResults);
     }
+
 }
