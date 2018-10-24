@@ -1,13 +1,17 @@
 package com.example.ashi.devconemergencyapp.Fragment;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -22,6 +26,7 @@ import android.widget.TableLayout;
 import com.example.ashi.devconemergencyapp.Adapter.SlideshowAdapter;
 import com.example.ashi.devconemergencyapp.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -56,6 +61,8 @@ public class MainFragment extends Fragment {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
 
         if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},100);
+
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -84,8 +91,10 @@ public class MainFragment extends Fragment {
                         }
                     }
                 });
-
-
+        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        LocationListener listener = new MyLocationListener();
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 4000,2 , (LocationListener) listener);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 4000,2 , listener);
 
         final ArrayList<Integer> imgRes = new ArrayList<>();
         imgRes.add(R.drawable.complainslider);
@@ -180,4 +189,41 @@ public class MainFragment extends Fragment {
         return view;
     }
 
+    private class MyLocationListener implements LocationListener {
+        @Override
+        public void onLocationChanged(Location location) {
+            if (location != null) {
+                // Logic to handle location object
+                lati=location.getLatitude();
+                longi=location.getLongitude();
+                String androidId = Settings.Secure.getString(getActivity().getContentResolver(),
+                        Settings.Secure.ANDROID_ID);
+                DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference();
+                com.example.ashi.devconemergencyapp.Model.Location location1=new com.example.ashi.devconemergencyapp.Model.Location();
+                location1.setLat(lati);
+                location1.setLng(longi);
+                databaseReference.child("Coordinates").child(androidId).setValue(location1);
+            }
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 }

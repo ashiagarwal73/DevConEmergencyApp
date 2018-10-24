@@ -27,8 +27,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        EmergencyFragment emergencyFragment=new EmergencyFragment();
-        emergencyFragment.onRequestPermissionsResult(requestCode,permissions,grantResults);
+        if(requestCode==100)
+        {
+            MainFragment mainFragment=new MainFragment();
+            mainFragment.onRequestPermissionsResult(requestCode,permissions,grantResults);
+        }
+        else {
+            EmergencyFragment emergencyFragment = new EmergencyFragment();
+            emergencyFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 
 }
