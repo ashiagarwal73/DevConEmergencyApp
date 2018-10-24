@@ -7,108 +7,87 @@
 
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".Fragment.MainFragment">
 
-    <Button
-        android:id="@+id/view_complain"
-        android:layout_width="228dp"
-        android:layout_height="99dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        android:background="#ffabac"
-        android:text="View Your
-   Complains"
-        android:textColor="#FFFFFF"
-        android:textSize="17dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/mechanics"
-        app:layout_constraintTop_toBottomOf="@+id/emergency" />
-
-    <Button
-        android:id="@+id/mechanics"
-        android:layout_width="126dp"
-        android:layout_height="102dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        android:background="#f29bad"
-        android:text="Repair Points"
-        android:textColor="#FFFFFF"
-        android:textSize="17dp"
-        app:layout_constraintEnd_toStartOf="@+id/view_complain"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/complain" />
-
-    <Button
-        android:id="@+id/emergency"
-        android:layout_width="142dp"
-        android:layout_height="115dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:background="#DB2C58"
-        android:text="Emergency"
-        android:textColor="#FFFFFF"
-        android:textSize="17dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/complain"
-        app:layout_constraintTop_toBottomOf="@+id/tab_layout_fragment_main" />
-
-    <Button
-        android:id="@+id/complain"
-        android:layout_width="216dp"
-        android:layout_height="115dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:background="#FA7681"
-        android:text="Complain "
-        android:textColor="#FFFFFF"
-        android:textSize="17dp"
-        app:layout_constraintEnd_toStartOf="@+id/emergency"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tab_layout_fragment_main" />
-
-    <Button
-        android:id="@+id/crowd"
-        android:layout_width="361dp"
-        android:layout_height="74dp"
-        android:layout_marginBottom="18dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        android:background="#FA7681"
-        android:text="Crowd Compass"
-        android:textColor="#FFFFFF"
-        android:textSize="17dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_complain"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/tab_layout_fragment_main">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/view_complain"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#ffabac"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:text="View Your Complains"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp" />
+
+        <Button
+            android:id="@+id/mechanics"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1.5"
+            android:layout_margin="5dp"
+            android:background="#f29bad"
+            android:text="Repair Points"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/emergency"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1.5"
+            android:background="#DB2C58"
+            android:layout_margin="5dp"
+            android:text="Emergency"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp" />
+
+        <Button
+            android:id="@+id/complain"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#FA7681"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:text="Complain "
+            android:textColor="#FFFFFF"
+            android:textSize="17dp" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/crowd"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#FA7681"
+            android:text="Crowd Compass"
+            android:layout_margin="5dp"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp" />
+
+    </LinearLayout>
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager_fragment_main"
         android:layout_width="0dp"
