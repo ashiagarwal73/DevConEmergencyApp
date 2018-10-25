@@ -91,6 +91,7 @@ public class ComplainSystemFragment extends Fragment {
         categories.add("Choose Category");
         categories.add("Police");
         categories.add("Railway");
+        categories.add("Muncipality");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, categories);
         spinner.setAdapter(dataAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
