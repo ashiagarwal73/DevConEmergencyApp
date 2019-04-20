@@ -1,4 +1,4 @@
-# AAPAT
+# APAAT
 ![App Log](apaat.PNG)</BR>
 
 We all face problems in our day to
@@ -12,7 +12,7 @@ helping hand, but with the help our
 application we surely can direct you
 towards it, as I quote“God helps
 those who help themselves”
-AAPAT, an application that we wish
+APAAT, an application that we wish
 to be every users go to for any kind
 of emergency, will help you in every
 way possible when you’re at
