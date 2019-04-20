@@ -1,5 +1,6 @@
 # APAAT
-![App Log](apaat.PNG)   
+![App Log](apaat.PNG)</BR>
+
 We all face problems in our day to
 day lives and it’s very simple to point
 them out or wish for someone to
@@ -11,7 +12,7 @@ helping hand, but with the help our
 application we surely can direct you
 towards it, as I quote“God helps
 those who help themselves”
-AAPAT, an application that we wish
+APAAT, an application that we wish
 to be every users go to for any kind
 of emergency, will help you in every
 way possible when you’re at
@@ -46,6 +47,6 @@ The following features have to be worked upon :-
 * Backend algorithms for image processing of complaints.
 * We plan to migrate our database to Amazon Web Services.
 
-APK : https://drive.google.com/open?id=1iEqRjVZcyVqnMNARQhtQRxAcp6fg21f-
+APK : https://drive.google.com/open?id=1kTIJS9G7oWmJvdItGceZj7L_lOVdfRk2
 
 ![FUTURE](IMG_20181012_232435.jpg)
